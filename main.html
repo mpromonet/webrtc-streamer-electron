@@ -7,8 +7,8 @@
 <script src="html/webrtcstreamer.js" ></script>
 <script>        
 	var webRtcServer      = new WebRtcStreamer("video", webrtcConfig.url);
-	window.onload         = function() { webRtcServer.connect(webrtcConfig.video,webrtcConfig.audio,webrtcConfig.options) }
-	window.onbeforeunload = function() { webRtcServer.disconnect() }
+	window.onload         = function() { webRtcServer.connect(webrtcConfig.video, null, webrtcConfig.options) }
+	window.onbeforeunload = function() { webRtcServer.webRtcServer.disconnect() }
 </script>
 </head>
 <body> 

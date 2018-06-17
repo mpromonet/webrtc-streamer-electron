@@ -1,1 +1,4 @@
-"# webrtc-streamer-electron" 
+# webrtc-streamer-electron
+
+npm i
+npm start

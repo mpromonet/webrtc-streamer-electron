@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, Menu} = require('electron')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -9,11 +9,45 @@ function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 800, height: 600})
 
+  //mainWindow.openDevTools();
+
   // and load the index.html of the app.
   mainWindow.loadFile('main.html')
 
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  var application_menu = [
+    {
+      label: 'WebRTC Streams',
+      submenu: [
+        {
+          label: 'Norway',
+          click: () => {
+            mainWindow.webContents.executeJavaScript(`webRtcServer.connect('rtsp://217.17.220.110/axis-media/media.amp',null,webrtcConfig.options)`)
+          }
+        },
+        {
+          label: 'Scheveningen',
+          click: () => {
+            mainWindow.webContents.executeJavaScript(`webRtcServer.connect('rtsp://b1.dnsdojo.com:1935/live/sys3.stream',null,webrtcConfig.options)`)
+          }
+        },
+        {
+          label: 'Varik',
+          click: () => {
+            mainWindow.webContents.executeJavaScript(`webRtcServer.connect('rtsp://streaming3.webcam.nl:80/varik/varik.stream',null,webrtcConfig.options)`)
+          }
+        },
+        {
+          label: 'Paris',
+          click: () => {
+            mainWindow.webContents.executeJavaScript(`webRtcServer.connect('rtsp://46.105.54.176:80/64connections/Pariscam1.stream',null,webrtcConfig.options)`)
+          }
+        },
+      ]
+    }
+  ];
+
+  menu = Menu.buildFromTemplate(application_menu);
+  Menu.setApplicationMenu(menu);
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
