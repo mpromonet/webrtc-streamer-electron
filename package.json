@@ -1,0 +1,15 @@
+{
+  "name": "webrtc-streamer-electron",
+  "version": "1.0.0",
+  "description": "webrtc-streamer electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/mpromonet/webrtc-streamer-electron",
+  "author": "Michel Promonet",
+  "license": "unlicensed",
+  "devDependencies": {
+    "electron": "^2.0.0"
+  }
+}

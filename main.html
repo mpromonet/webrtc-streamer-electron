@@ -1,0 +1,18 @@
+<html>
+<head>
+<script>
+	global.request = require('then-request')
+</script>
+<script src="webrtcstreamer.json" ></script>
+<script src="html/webrtcstreamer.js" ></script>
+<script>        
+	var webRtcServer      = new WebRtcStreamer("video", webrtcConfig.url);
+	window.onload         = function() { webRtcServer.connect(webrtcConfig.video,webrtcConfig.audio,webrtcConfig.options) }
+	window.onbeforeunload = function() { webRtcServer.disconnect() }
+</script>
+</head>
+<body> 
+    <video id="video" />
+</body>
+</html>
+
